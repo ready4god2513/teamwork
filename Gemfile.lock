@@ -1,16 +1,32 @@
+PATH
+  remote: .
+  specs:
+    teamwork (2.0.0)
+      faraday (~> 0.8)
+      faraday_middleware
+      htmlentities (~> 4.3)
+      multi_json (~> 1.8)
+      multipart-post
+
 GEM
   remote: https://rubygems.org/
   specs:
-    hoe (3.7.1)
-      rake (>= 0.8, < 11.0)
-    json (1.8.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    htmlentities (4.3.2)
+    multi_json (1.10.1)
+    multipart-post (2.0.0)
     rake (10.1.0)
-    rdoc (4.0.1)
-      json (~> 1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  hoe (~> 3.7)
-  rdoc (~> 4.0)
+  dotenv (~> 0.9, >= 0.9.0)
+  rake
+  teamwork!
