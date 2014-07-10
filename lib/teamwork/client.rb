@@ -10,6 +10,7 @@ module Teamwork
     include Teamwork::Client::Account
     include Teamwork::Client::Activity
     include Teamwork::Client::Comment
+    include Teamwork::Client::Company
     include Teamwork::Client::File
     include Teamwork::Client::Message
     include Teamwork::Client::Notebook

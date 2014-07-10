@@ -5,8 +5,8 @@ describe Teamwork::Client::Comment do
   before(:each) { authenticate }
 
   let(:comment_body) { {body: "Hey", notify: "", isprivate: false, pendingFileAttachments: ""} }
-  let(:comment_id) { 1124805 }
-  let(:task) { 2913171 }
+  let(:comment_id) { ENV["COMMENT_ID"] }
+  let(:task) { ENV["TASK_ID"] }
 
   context "#get_comments" do
 

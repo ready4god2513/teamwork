@@ -6,7 +6,7 @@ describe Teamwork::Client::Project do
 
   context "#project_activity" do
 
-    let(:project_id) { Teamwork.projects.first.id }
+    let(:project_id) { ENV["PROJECT_ID"] }
     let(:activity) { Teamwork.project_activity(project_id) }
 
     it "retrieves activity" do
@@ -26,7 +26,7 @@ describe Teamwork::Client::Project do
     # The difficulty here is that listing all the projects doesn't show whether
     # the project has enabled a timer or not.  We will need to set something
     # up with VCR here.
-    let(:project_id) { Teamwork.projects.first.id }
+    let(:project_id) { ENV["PROJECT_ID"] }
     let(:timers) { Teamwork.project_timers(project_id) }
 
     it "retrieves activity" do

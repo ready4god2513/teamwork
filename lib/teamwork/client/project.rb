@@ -22,6 +22,40 @@ module Teamwork
         objects_from_response(:get, "projects/#{project_id}/time_entries", "time-entries", options)
       end
 
+      # GET people on a project
+      # params:
+      #   project_id: UnsignedInt
+      # Return [Teamwork::Thing]
+      def project_people(project_id)
+        objects_from_response(:get, "projects/#{project_id}/people", "people")
+      end
+
+      # GET files on a project
+      # Unfortunately the API returns a project with the associated files as a key
+      # in the hash. So lets get the files out after.
+      # params:
+      #   project_id: UnsignedInt
+      # Return [Teamwork::Thing]
+      def project_files(project_id)
+        object_from_response(:get, "projects/#{project_id}/files", "project").files.map { |file| Teamwork::Thing.new(file) }
+      end
+
+      # GET messages on a project
+      # params:
+      #   project_id: UnsignedInt
+      # Return [Teamwork::Thing]
+      def project_messages(project_id)
+        objects_from_response(:get, "projects/#{project_id}/posts", "posts")
+      end
+
+      # GET companies on a project
+      # params:
+      #   project_id: UnsignedInt
+      # Return [Teamwork::Thing]
+      def project_companies(project_id)
+        objects_from_response(:get, "projects/#{project_id}/companies", "people")
+      end
+
       # GET a list of projects
       # Options: 
       #   status: (ALL, ACTIVE, ARCHIVED)
