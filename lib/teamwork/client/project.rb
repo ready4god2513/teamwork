@@ -6,7 +6,20 @@ module Teamwork
       # GET the recent activity stream for a given project
       # Return [Teamwork::Thing]
       def project_activity(project_id, options = {})
-        objects_from_response(:get, "projects/#{project_id}/latestActivity", "activity", options.merge({maxItems: 60}))
+        objects_from_response(:get, "projects/#{project_id}/latestActivity", "activity", options.merge({maxItems: 50}))
+      end
+
+      # GET time entries for the project
+      # options:
+      #   page: UnsignedInt
+      #   fromdate: YYYYMMDD
+      #   fromtime: HH:MM
+      #   todate: YYYYMMDD
+      #   totime: HH:MM
+      #   sortorder: (ASC, DESC) (defaults to ascending order by date (oldest to newest))
+      # Return [Teamwork::Thing]
+      def project_timers(project_id, options = {})
+        objects_from_response(:get, "projects/#{project_id}/time_entries", "time-entries", options)
       end
 
       # GET a list of projects

@@ -16,19 +16,30 @@ module Teamwork
     include Teamwork::Client::People
     include Teamwork::Client::Project
     include Teamwork::Client::Task
-
-    def initialize(subdomain, api_key)
-      @subdomain, @api_key = subdomain, api_key
-    end
+    include Teamwork::Client::Timer
 
     def api_endpoint
-      @api_endpoint ||= "http://#{@subdomain}.teamworkpm.net/"
+      @api_endpoint ||= "http://#{Teamwork.subdomain}.teamworkpm.net/"
+    end
+
+    def self.authenticated?
+      !Teamwork.subdomain.nil? || !Teamwork.api_key.nil?
     end
 
     private
 
     def objects_from_response(method, path, key, params = nil, format = ".json")
-      send(method.to_sym, "#{path}#{format}", params).body[key]. map { |item| Teamwork::Thing.new(item) }
+      res = response(method, path, key, params, format)[key]
+      return [] if res.nil?
+      res.map { |item| Teamwork::Thing.new(item) }
+    end
+
+    def object_from_response(method, path, key, params = nil, format = ".json")
+      Teamwork::Thing.new(response(method, path, key, params, format)[key])
+    end
+
+    def response(method, path, key, params, format)
+      send(method.to_sym, "#{path}#{format}", params).body
     end
 
     def get(path, params = nil)
@@ -51,15 +62,15 @@ module Teamwork
       connection.send(method.to_sym, path, parameters).env
     end
 
-    def connection
-      @connection ||= Faraday.new api_endpoint do |c|
+    def connection(endpoint = api_endpoint)
+      Faraday.new endpoint do |c|
         c.request :multipart
         c.request :json
         c.request :url_encoded
         c.response :json, content_type: /\bjson$/
         c.adapter :net_http
         c.headers[:cache_control] = 'no-cache'
-        c.basic_auth(@api_key, '')
+        c.basic_auth(Teamwork.api_key, '')
       end
     end
 

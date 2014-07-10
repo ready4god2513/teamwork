@@ -7,7 +7,7 @@ module Teamwork
     attr_accessor :api_key, :subdomain
 
     def client
-      @client ||= Teamwork::Client.new(subdomain, api_key)
+      @client ||= Teamwork::Client.new
     end
 
     def respond_to?(method_name, include_private = false)
