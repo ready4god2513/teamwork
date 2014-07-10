@@ -26,6 +26,10 @@ module Teamwork
       !Teamwork.subdomain.nil? || !Teamwork.api_key.nil?
     end
 
+    def resources
+      %w{links milestones files notebooks tasks}
+    end
+
     private
 
     def objects_from_response(method, path, key, params = nil, format = ".json")

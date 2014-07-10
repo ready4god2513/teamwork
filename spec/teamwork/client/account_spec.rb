@@ -44,6 +44,10 @@ describe Teamwork::Client::Account do
       expect { Teamwork.account_info }.to raise_error
     end
 
+    it "fills out the name" do
+      expect(Teamwork.account_info.name).to_not be_nil
+    end
+
   end
 
 end
