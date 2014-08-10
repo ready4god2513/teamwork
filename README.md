@@ -18,10 +18,10 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
 #### Account
 
-    Teamwork.account_info
+    ```Teamwork.account_info```
 
 
-    Teamwwork.authenticate(api_key)
+    ```Teamwwork.authenticate(api_key)```
 
 #### Activity
 
