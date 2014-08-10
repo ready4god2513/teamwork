@@ -53,3 +53,23 @@ options:
 return: [Teamwork::Thing]
 
     Teamwork.get_comments(resource, id, options = {})
+
+# GET a single comment by ID
+# params:
+#   id: UnsignedInt
+# return Teamwork::Thing
+
+    Teamwork.get_comment(id)
+
+# POST a new comment
+# params:
+#   resource: String (links, milestones, files, notebooks, tasks)
+#   id: UnsignedInt (the id of the resource that you want to post comments to)
+# options:
+#   body: String
+#   notify: String (who should we notify of this comment?)
+#   ispprivate: Boolean (default false)
+#   pendingFileAttachments: String (see http://developer.teamwork.com/uploadingfiles for more info)
+# return Teamwork::Thing
+    
+    Teamwork.post_comment(resource, id, options)
