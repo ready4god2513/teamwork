@@ -18,22 +18,34 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
 #### Account
 
-    # GET the authenticated users's information
-    # Return Teamwork::Thing
+GET the authenticated users's information
+Return Teamwork::Thing
     Teamwork.account_info
 
 
-    # GET an authenticated user
-    # This part is unique to the rest of the lib
-    # in that it uses a different path for the API call.
-    # What we can get from this, however, is the subdomain that the
-    # user is a part of and store that for future API calls.
-    # http://authenticate.teamworkpm.net/authenticate.json
-    # Return Teamwork::Thing (or 401 if auth fails)
+GET an authenticated user
+This part is unique to the rest of the lib
+in that it uses a different path for the API call.
+What we can get from this, however, is the subdomain that the
+user is a part of and store that for future API calls.
+http://authenticate.teamworkpm.net/authenticate.json
+Return Teamwork::Thing (or 401 if auth fails)
     Teamwwork.authenticate(api_key)
 
 #### Activity
 
-  # GET the recent activity stream across all projects
-  # Return [Teamwork::Thing]
-  Teamwork.recent_activity(options) # Defaults to returning 60 items
+GET the recent activity stream across all projects
+Return [Teamwork::Thing]
+    Teamwork.recent_activity(options) # Defaults to returning 60 items
+
+#### Comment
+
+GET comments for a given resource
+params:
+  resource: String (links, milestones, files, notebooks, tasks)
+  id: UnsignedInt (the id of the resource that you want to get comments on)
+options:
+  page: UnsignedInt
+  pageSize: UnsignedInt (default 50)
+return: [Teamwork::Thing]
+    Teamwork.get_comments(resource, id, options = {})
