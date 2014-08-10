@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://teamwork.com/"
   spec.license       = "MIT"
 
-  spec.files = %w(LICENSE.md README.md Rakefile teamwork.gemspec)
+  spec.files = %w(LICENSE README.md Rakefile teamworkpm.gemspec)
   spec.files += Dir.glob("lib/**/*.rb")
   spec.files += Dir.glob("spec/**/*")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
