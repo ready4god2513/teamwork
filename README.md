@@ -73,3 +73,22 @@ options:
 return Teamwork::Thing
     
     Teamwork.post_comment(resource, id, options)
+
+PUT an update to a comment
+params:
+  id: UnsignedInt (the id of the comment that you want update)
+options:
+  body: String
+  notify: String (who should we notify of this comment?)
+  ispprivate: Boolean (default false)
+  pendingFileAttachments: String (see http://developer.teamwork.com/uploadingfiles for more info)
+return Integer (status code)
+
+    Teamwork.update_comment(id, options)
+
+DELETE a comment
+params:
+  id: UnsignedInt (the comment id to delete)
+return Int (status code)
+
+    Teamwork.delete_comment(id)
