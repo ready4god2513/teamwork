@@ -20,6 +20,7 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
 GET the authenticated users's information
 Return Teamwork::Thing
+
     Teamwork.account_info
 
 
@@ -30,12 +31,14 @@ What we can get from this, however, is the subdomain that the
 user is a part of and store that for future API calls.
 http://authenticate.teamworkpm.net/authenticate.json
 Return Teamwork::Thing (or 401 if auth fails)
+
     Teamwwork.authenticate(api_key)
 
 #### Activity
 
 GET the recent activity stream across all projects
 Return [Teamwork::Thing]
+
     Teamwork.recent_activity(options) # Defaults to returning 60 items
 
 #### Comment
@@ -48,4 +51,5 @@ options:
   page: UnsignedInt
   pageSize: UnsignedInt (default 50)
 return: [Teamwork::Thing]
+
     Teamwork.get_comments(resource, id, options = {})
