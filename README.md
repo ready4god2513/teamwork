@@ -20,7 +20,6 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
     Teamwork.account_info
 
-
     Teamwwork.authenticate(api_key)
 
 #### Activity
@@ -31,14 +30,72 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
     Teamwork.get_comments(resource, id, options = {})
 
-
     Teamwork.get_comment(id)
-
     
     Teamwork.post_comment(resource, id, options)
 
-
     Teamwork.update_comment(id, options)
 
-
     Teamwork.delete_comment(id)
+
+#### Company
+
+    Teamwork.get_companies
+
+#### File
+
+    Teamwork.get_file(id)
+
+#### Message
+
+    Teamwwork.get_message(id)
+
+#### Notebook
+
+    Teamwork.get_notebooks(options = {})
+
+#### People
+
+    Teamwork.get_people(options = {})
+
+#### Project
+
+    Teamwork.project_activity(project_id, options = {})
+    
+    Teamwork.project_timers(project_id, options = {})
+    
+    Teamwork.project_people(project_id)
+    
+    Teamwork.project_files(project_id)
+    
+    Teamwork.project_messages(project_id)
+    
+    Teamwork.project_companies(project_id)
+    
+    Teamwork.projects(options = {})
+    
+    Teamwork.project(id)
+    
+    Teamwork.toggle_project_star(id, star: true)
+    
+    Teamwork.create_project(options = {})
+    
+    Teamwork.update_project(id, options = {})
+
+    Teamwork.delete_project(id)
+
+#### Task
+
+    Teamwork.task_timers(task_id, options)
+
+    Teamwork.all_tasks(options = {})
+
+#### Timer
+
+    Teamwork.time_entries(options = {})
+    
+    Teamwork.time_entry(id)
+    
+    Teamwork.update_time_entry(options = {})
+
+    Teamwork.delete_time_entry(id)
