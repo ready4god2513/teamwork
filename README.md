@@ -18,77 +18,27 @@ Authentication to the API is done through the class method `authenticate`.  `Tea
 
 #### Account
 
-GET the authenticated users's information
-Return Teamwork::Thing
-
     Teamwork.account_info
 
-
-GET an authenticated user
-This part is unique to the rest of the lib
-in that it uses a different path for the API call.
-What we can get from this, however, is the subdomain that the
-user is a part of and store that for future API calls.
-http://authenticate.teamworkpm.net/authenticate.json
-Return Teamwork::Thing (or 401 if auth fails)
 
     Teamwwork.authenticate(api_key)
 
 #### Activity
 
-GET the recent activity stream across all projects
-Return [Teamwork::Thing]
-
     Teamwork.recent_activity(options) # Defaults to returning 60 items
 
 #### Comment
 
-GET comments for a given resource
-params:
-  resource: String (links, milestones, files, notebooks, tasks)
-  id: UnsignedInt (the id of the resource that you want to get comments on)
-options:
-  page: UnsignedInt
-  pageSize: UnsignedInt (default 50)
-return: [Teamwork::Thing]
-
     Teamwork.get_comments(resource, id, options = {})
 
-GET a single comment by ID
-params:
-  id: UnsignedInt
-return Teamwork::Thing
 
     Teamwork.get_comment(id)
 
-POST a new comment
-params:
-  resource: String (links, milestones, files, notebooks, tasks)
-  id: UnsignedInt (the id of the resource that you want to post comments to)
-options:
-  body: String
-  notify: String (who should we notify of this comment?)
-  ispprivate: Boolean (default false)
-  pendingFileAttachments: String (see http://developer.teamwork.com/uploadingfiles for more info)
-return Teamwork::Thing
     
     Teamwork.post_comment(resource, id, options)
 
-PUT an update to a comment
-params:
-  id: UnsignedInt (the id of the comment that you want update)
-options:
-  body: String
-  notify: String (who should we notify of this comment?)
-  ispprivate: Boolean (default false)
-  pendingFileAttachments: String (see http://developer.teamwork.com/uploadingfiles for more info)
-return Integer (status code)
 
     Teamwork.update_comment(id, options)
 
-DELETE a comment
-params:
-  id: UnsignedInt (the comment id to delete)
-return Int (status code)
 
     Teamwork.delete_comment(id)
