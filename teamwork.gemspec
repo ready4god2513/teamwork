@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'teamwork/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "teamwork"
+  spec.name          = "teamworkpm"
   spec.version       = Teamwork::VERSION
-  spec.authors       = ["Ed Halferty, Brandon Hansen"]
-  spec.email         = ["edhalferty@gmail.com, bh@jesusculture.com"]
+  spec.authors       = [" Brandon Hansen"]
+  spec.email         = ["bh@jesusculture.com"]
   spec.description   = "A Ruby wrapper to the Teamwork PM API"
   spec.summary       = "A Ruby wrapper to the Teamwork PM API"
   spec.homepage      = "http://teamwork.com/"

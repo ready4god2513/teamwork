@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    teamwork (2.0.0)
+    teamworkpm (2.0.0)
       faraday (~> 0.8)
       faraday_middleware
       htmlentities (~> 4.3)
@@ -29,4 +29,4 @@ PLATFORMS
 DEPENDENCIES
   dotenv (~> 0.9, >= 0.9.0)
   rake
-  teamwork!
+  teamworkpm!
