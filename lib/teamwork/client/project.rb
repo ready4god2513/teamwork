@@ -81,7 +81,7 @@ module Teamwork
 
       # PUT a start to a project
       # Return Boolean
-      def toggle_project_star(id, star: true)
+      def toggle_project_star(id, star = true)
         url = star ? "projects/#{id}/star" : "projects/#{id}/unstar"
         object_from_response(:put, url, "project", project: options)
       end
